@@ -7,7 +7,7 @@ const FruitList = () => {
 
   const fetchFruits = async () => {
     try {
-      const response = await api.get('/fruits');
+      const response = await api.get('/');
       setFruits(response.data.fruits);
     } catch (error) {
       console.error("Error fetching fruits", error);
@@ -16,7 +16,7 @@ const FruitList = () => {
 
   const addFruit = async (fruitName) => {
     try {
-      await api.post('/fruits', { name: fruitName });
+      await api.post('/', { name: fruitName });
       fetchFruits();  // Refresh the list after adding a fruit
     } catch (error) {
       console.error("Error adding fruit", error);
