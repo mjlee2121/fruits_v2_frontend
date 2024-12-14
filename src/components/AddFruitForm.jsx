@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 
-const AddFruitForm = ({ addFruit }) => {
+const AddFruitForm = ({ addFruit, setResult, setShowDiv }) => {
   const [fruitName, setFruitName] = useState('');
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     if (fruitName) {
-      addFruit(fruitName);
-      setFruitName('');
+      addFruit(fruitName)
+      setFruitName('')
+      setShowDiv(true)
+      setResult('added')
     }
   };
 
