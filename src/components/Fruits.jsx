@@ -20,14 +20,13 @@ const FruitList = () => {
 
   const addFruit = async (fruitName) => {
     try {
-      // file:///Users/minjilee/Project/fruits/photos/apple.jpeg
       const photoPath = `http://localhost:8000/images/${fruitName.toLowerCase()}.jpeg`
 
       const response = await api.post('/', { name: fruitName, photo_path: photoPath });
 
       fetchFruits();  // Refresh the list after adding a fruit
       setCurrentPhoto(response.data.photo_path)
-      console.log(currentPhoto); // Should be '/photos/fruitname.jpg'
+      console.log(currentPhoto); 
 
     } catch (error) {
       console.error("Error adding fruit", error);
@@ -54,8 +53,6 @@ const FruitList = () => {
     // show the list of fruits on each refresh
     fetchFruits();
     setResult(false)
-    
-  
   }, []);
 
   return (
@@ -63,7 +60,6 @@ const FruitList = () => {
       <h2>Fruits List</h2>
       <div className='photo'>
         {currentPhoto && <img src={`http://localhost:8000${currentPhoto}`} alt="Fruit image unavailable" />}
-        {console.log(currentPhoto)}
       </div>
       <ul>
         {fruits.map((fruit, index) => (

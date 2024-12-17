@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: radial-gradient(#8FAE5E, #F9D34F, #FF786C, #C64988, #C64988);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,6 +16,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .App-link {
@@ -46,4 +47,20 @@
   width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+.submit-button {
+  width: 100px;
+  height: 40px;
+  background-color: #8FAE5E;
+  color: white;
+  border-radius: 6px;
+}
+
+.input-box {
+  width: 200px;
+  height: 40px;
+  color: black;
+  border-radius: 6px;
+  margin: 5px;
 }

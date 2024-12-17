@@ -21,12 +21,13 @@ const DeleteFruitForm = ({deleteFruit, setResult, setShowDiv}) => {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        className='input-box'
         type="text"
         value={fruitName}
         onChange={(e) => setFruitName(e.target.value)}
         placeholder="Enter fruit name"
       />
-      <button type="submit">Delete Fruit</button>
+      <button className='submit-button' type="submit">Delete Fruit</button>
     </form>
   )
 }
