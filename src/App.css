@@ -35,3 +35,15 @@
 .visible {
   border: #282c34 1px;
 }
+
+.photo {
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+.photo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

@@ -7,6 +7,7 @@ const FruitList = () => {
   const [fruits, setFruits] = useState([]);
   const [showDiv, setShowDiv] = useState(false)
   const [result, setResult] = useState('')
+  const [currentPhoto, setCurrentPhoto] = useState('')
 
   const fetchFruits = async () => {
     try {
@@ -19,8 +20,15 @@ const FruitList = () => {
 
   const addFruit = async (fruitName) => {
     try {
-      await api.post('/', { name: fruitName });
+      // file:///Users/minjilee/Project/fruits/photos/apple.jpeg
+      const photoPath = `http://localhost:8000/images/${fruitName.toLowerCase()}.jpeg`
+
+      const response = await api.post('/', { name: fruitName, photo_path: photoPath });
+
       fetchFruits();  // Refresh the list after adding a fruit
+      setCurrentPhoto(response.data.photo_path)
+      console.log(currentPhoto); // Should be '/photos/fruitname.jpg'
+
     } catch (error) {
       console.error("Error adding fruit", error);
     }
@@ -28,8 +36,10 @@ const FruitList = () => {
 
   const deleteFruit = async (fruitName) =>{
     try {
+      const photoPath = `http://localhost:8000/images/${fruitName.toLowerCase()}.jpeg`
+
       await api.delete('/', {
-        data: {name: fruitName}})
+        data: {name: fruitName, photo_path: photoPath}})
       fetchFruits()
     } catch (error){
       console.error("Error deleting fruit", error)
@@ -51,6 +61,10 @@ const FruitList = () => {
   return (
     <div>
       <h2>Fruits List</h2>
+      <div className='photo'>
+        {currentPhoto && <img src={`http://localhost:8000${currentPhoto}`} alt="Fruit image unavailable" />}
+        {console.log(currentPhoto)}
+      </div>
       <ul>
         {fruits.map((fruit, index) => (
           <li key={index}>{fruit.name}</li>
